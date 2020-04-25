@@ -3,17 +3,16 @@
 
     class SystemController implements ISystem
     {
-        private $userId;
         private $CategoryController;
         private $OperationController;
         private $LogOutController;
 
+
         /**
          * SystemController constructor.
-         * @param integer $userId
          */
-        public function __construct($userId) {
-            $this->userId = $userId;
+        public function __construct() {
+
         }
         public function __destruct()
         {
@@ -21,44 +20,7 @@
         }
 
 
-        /**
-         * @inheritDoc
-         */
-        public function LogOut()
-        {
-            // TODO: Implement LogOut() method.
-        }
-
-        public function GetCategories()
-        {
-            // TODO: Implement GetCategories() method.
-        }
-
-        public function GetAllOperations()
-        {
-            // TODO: Implement GetAllOperations() method.
-        }
-
-        /**
-         * @inheritDoc
-         */
-        public function GetOperationsByCategory($operationID)
-        {
-            // TODO: Implement GetOperationsByCategory() method.
-        }
-
-        /**
-         * @inheritDoc
-         */
-        public function GetOperationsFromDatetimeInterval($operationID, $endDatetime, $datetimeInterval)
-        {
-            // TODO: Implement GetOperationsFromDatetimeInterval() method.
-        }
-
-        /**
-         * @inheritDoc
-         */
-        public function AddCategory($name)
+        public function AddCategory($user, $name)
         {
             // TODO: Implement AddCategory() method.
         }
@@ -79,9 +41,6 @@
             // TODO: Implement RemoveCategory() method.
         }
 
-        /**
-         * @inheritDoc
-         */
         public function AddExpense($value, $categoryID)
         {
             // TODO: Implement AddExpense() method.
@@ -101,6 +60,46 @@
         public function DeleteOperation($operationID)
         {
             // TODO: Implement DeleteOperation() method.
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function LogOut($userID)
+        {
+            // TODO: Implement LogOut() method.
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function GetCategories($userID)
+        {
+            // TODO: Implement GetCategories() method.
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function GetAllOperations($userID)
+        {
+            // TODO: Implement GetAllOperations() method.
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function GetOperationsByCategory($categoryID)
+        {
+            // TODO: Implement GetOperationsByCategory() method.
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function GetOperationsFromDatetimeInterval($categoryID, $endDatetime, $datetimeInterval)
+        {
+            // TODO: Implement GetOperationsFromDatetimeInterval() method.
         }
 
         /**
