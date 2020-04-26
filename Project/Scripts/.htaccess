@@ -1,0 +1,5 @@
+<IfModule dir_module>
+	AddDefaultCharset UTF-8
+    DirectoryIndex index.php
+	php_value max_input_vars 10000
+</IfModule>
