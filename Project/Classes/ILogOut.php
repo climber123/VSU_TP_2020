@@ -4,8 +4,9 @@
     interface ILogOut
     {
         /**
+         * @param integer $userID
          * @return IAuthorization mixed
          */
-        public function LogOut();
+        public function LogOut($userID);
 
     }
