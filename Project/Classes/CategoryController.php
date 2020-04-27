@@ -3,26 +3,30 @@
 
     class CategoryController
     {
-        private $userID;
         private $categoryDAO;
+
 
         /**
          * CategoryController constructor.
-         * @param integer $userID
          */
-        public function __construct($userID) {
-            $this->userID = $userID;
+        public function __construct() {
+
         }
         public function __destruct()
         {
             // TODO: Implement __destruct() method.
         }
-        public function GetCategories(){}
 
         /**
+         * @param $userID
+         */
+        public function GetCategories($userID){}
+
+        /**
+         * @param integer $userID
          * @param string $name
          */
-        public function AddCategory($name){}
+        public function AddCategory($userID, $name){}
 
         /**
          * @param integer t$categoryID
