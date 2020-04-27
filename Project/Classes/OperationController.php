@@ -3,15 +3,11 @@
 
     class OperationController
     {
-        private $userID;
         private $operationDAO;
 
-        /**
-         * OperationController constructor.
-         * @param integer $userID
-         */
-        public function __construct($userID) {
-            $this->userID = $userID;
+
+        public function __construct() {
+
         }
         public function __destruct()
         {
@@ -35,7 +31,11 @@
          * @param integer $operationID
          */
         public function DeleteOperation($operationID){}
-        public function GetOperations(){}
+
+        /**
+         * @param integer $userID
+         */
+        public function GetOperations($userID){}
 
         /**
          * @param integer $categoryID

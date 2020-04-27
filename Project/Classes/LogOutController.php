@@ -3,14 +3,8 @@
 
     class LogOutController
     {
-        private $userID;
 
-        /**
-         * LogOutController constructor.
-         * @param integer$userID
-         */
-        public function __construct($userID) {
-            $this->userID = $userID;
+        public function __construct() {
         }
         public function __destruct()
         {
