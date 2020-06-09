@@ -17,7 +17,7 @@
          * @return mixed
          */
         public function RemoveCategory($operationID);
-        public function AddExpense($value, $categoryID);
+        public function AddExpense($value, $categoryID, $date_time);
 
         /**
          * @param integer $operationID

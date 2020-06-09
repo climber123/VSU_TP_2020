@@ -1,19 +1,19 @@
 <?php
-
-
-    class DAO
+    abstract class DAO
     {
         protected $tableName;
         protected $atributeNames;
 
-        protected function ConnectDataBase(){}
+        protected function ConnectDataBase(){
+
+        }
 
         /**
          * DAO constructor.
          * @param string $tableName
          * @param array $atributeNames
          */
-        public function __construct($tableName, $atributeNames) {
+        public function __construct($tableName, $atributeNames = null) {
             $this->tableName = $tableName;
             $this->atributeNames = $atributeNames;
         }
@@ -25,16 +25,17 @@
         /**
          * @param $data
          */
-        public function Insert($data){}
+        abstract public function Insert($data);
 
         /**
          * @param $data
          */
-        public function Update($data){}
+        abstract public function Update($data);
 
         /**
          * @param $data
          */
-        public function Delete($data){}
+        abstract public function Delete($data);
 
     }
+?>

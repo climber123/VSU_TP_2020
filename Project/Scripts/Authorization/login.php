@@ -17,7 +17,7 @@
 		$_SESSION['user_id'] = $user['user_id'];
 		$_SESSION['user_login'] = $user['user_login'];
 		$_SESSION['user_name'] = $user['user_name'];
-		header("Location: ../categories_page.php");
+		header("Location: ../categories.html");
 		die('');
 	}
 

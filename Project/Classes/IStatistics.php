@@ -7,7 +7,9 @@
          * @param $userID
          * @return mixed
          */
-        public function GetCategories($userID);
+        //public function GetCategories($userID);
+
+        public function GetCategories($user_id, $startDateTime, $endDatetime);
 
         /**
          * @param $userID
@@ -27,20 +29,23 @@
          * @param datetime $datetimeInterval
          * @return mixed
          */
-        public function GetOperationsFromDatetimeInterval($categoryID, $endDatetime, $datetimeInterval);
+        public function GetOperationsFromDatetimeIntervalByCategory($categoryID, $endDatetime, $datetimeInterval);
+
+        public function GetOperationsFromDatetimeInterval($user_id,$endDatetime, $datetimeInterval);
+
 
         /**
          * @param datetime $endDatetime
          * @param datetime $datetimeInterval
          * @return mixed
          */
-        public function GetAmountExpenses($endDatetime, $datetimeInterval);
+        public function GetAmountExpenses($user_id,$endDatetime, $datetimeInterval);
 
         /**
          * @param datetime $endDatetime
          * @param datetime $datetimeInterval
          * @return mixed
          */
-        public function GetAverageExpense($endDatetime, $datetimeInterval);
+        public function GetAverageExpense($user_id,$endDatetime, $datetimeInterval);
 
     }

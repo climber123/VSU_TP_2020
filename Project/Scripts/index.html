@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<title>SmartExpenses</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="Styles/styles.css">
+	<link rel="stylesheet" href="Fonts/fonts_login_page.css">
+    <link rel="stylesheet" href="Fonts/money_font.css">
+<script src="Js/jquery-3.5.1.min.js"></script>
+	<style>
+body, html {height: 100%}
+header{font-family: "Amatic SC", sans-serif}
+.menu {display: none}
+.bgimg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url("Images/money_background.jpg_large");
+    min-height: 100%;
+}
+        .w3-modal{
+            padding-top:50px
+        }
+</style>
+<body>
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-padding">
+    <span class="w3-tag w3-xlarge">Пожалуйста, войдите в Ваш аккаунт</span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-black    w3-hide-small" style="font-size:100px;font-family:'MoneyMoney';">$mart<br>Expen$es</span>
+    <span class="w3-text-white w3-hide-large w3-hide-medium" style="font-size:60px"><b>$mart<br>Expen$es</b></span>
+    <p><button onclick="document.getElementById('login_modal').style.display='block'" class="w3-button w3-margin w3-xxlarge w3-black">Login</button>
+        <button onclick="document.getElementById('signup_modal').style.display='block'" class="w3-button w3-margin w3-xxlarge w3-black">Sign Up</button></p>
+  </div>
+</header>
+
+<div class="w3-container">
+  <div id="login_modal" class="w3-modal">
+    <div id="login_card" class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+  
+      <div class="w3-center"><br>
+        <span onclick="document.getElementById('login_modal').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
+        <img src="Images/img_avatar.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+      </div>
+
+      <form id="login_form" method="post" class="w3-container" action="Authorization/login">
+        <div id="login_div" class="w3-section">
+          <label><b>Login</b></label>
+          <input id="login"  class="w3-input w3-border w3-margin-bottom" autofocus="true" type="text" placeholder="Enter login" name="user_login" required>
+          <label><b>Password</b></label>
+          <input id="password"  class="w3-input w3-border" type="password" placeholder="Enter Password" name="user_password" required>
+          <button id="submit" class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
+          
+          
+        </div>
+      </form>
+
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+        <button onclick="document.getElementById('login_modal').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+       
+      </div>
+
+    </div>
+  </div>
+  <div id="signup_modal" class="w3-modal" style="padding-top:5px">
+    <div id="signup_card" class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+      <div class="w3-center"><br>
+        <span onclick="document.getElementById('signup_modal').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
+        <img src="Images/img_avatar.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+      </div>
+
+      <form id="signup_form" method="post" class="w3-container" action="Authorization/login">
+        <div id="signup_div" class="w3-section">
+          <label><b>Username</b></label>
+          <input id="username_signup"  class="w3-input w3-border w3-margin-bottom" autofocus="true" type="text" placeholder="Enter Username" name="user_login" required>
+          <label><b>Email</b></label>
+          <input id="login_signup"  class="w3-input w3-border w3-margin-bottom" autofocus="true" type="text" placeholder="Enter email" name="user_email" required>
+          <label><b>Password</b></label>
+          <input id="password_signup"  class="w3-input w3-border" type="password" placeholder="Enter Password" name="user_password" required>
+          <button id="submit_signup" class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Sign Up</button>
+
+
+        </div>
+      </form>
+
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+        <button onclick="document.getElementById('signup_modal').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $("#login_form").submit(function(event) {
+        // Предотвращаем обычную отправку формы
+        event.preventDefault();
+        var jqXHR= $.post('http://smartexpenses/login', JSON.stringify({'user_login':$('#login').val(), 'user_password' : $('#password').val()}));
+        jqXHR.done(
+        function (data) {
+          /*console.log(data);
+          console.log('555');*/
+            if(data.hasOwnProperty('status')){
+                /*var password_input=document.getElementById('password');
+                var not_auth_mess_label=password_input.cloneNode('true');
+                not_auth_mess_label_text=document.createTextNode('Логин или пароль неверны');
+                not_auth_mess_label.appendChild(not_auth_mess_label_text);
+                document.insertBefore(not_auth_mess_label,document.getElementById('submit'));*/
+                alert("Неверное имя пользователя или пароль!")
+            }
+            else{
+              var token=data.jwt;
+                localStorage.setItem('token',token);
+                document.location='http://smartexpenses/categories.html';
+            }
+        },'json');
+    });
+    $("#signup_form").submit(function(event) {
+      // Предотвращаем обычную отправку формы
+      event.preventDefault();
+      var jqXHR= $.post('http://smartexpenses/signup', JSON.stringify({'user_login':$('#login_signup').val(), 'user_password' : $('#password_signup').val(),'user_name':$('#username_signup').val()}));
+      jqXHR.done(
+              function (data) {
+                /*console.log(data);
+                console.log('555');*/
+                if(data.hasOwnProperty('status')){
+                  alert("Пользователь с такой почтой уже существует!");
+                }
+                else{
+                  alert("Пользователь создан!");
+                  document.getElementById('signup_modal').style.display='none';
+                }
+              },'json');
+    });
+</script>
+            
+</body>
+</html>
