@@ -20,5 +20,6 @@
 + [Ссылка на приложение](http://f0448851.xsph.ru/)
 + [Статистика](https://metrika.yandex.ru/dashboard?id=65048551)
 + [Swagger](http://f0448851.xsph.ru/swagger-ui-master/dist/)
++ [Видео защиты проекта](https://www.youtube.com/watch?v=nQ9IjxC7OfM)
 
 
